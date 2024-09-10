@@ -14,7 +14,7 @@ export DB_NAME=<database name>
 export DB_PASSWORD=<password>
 export DB_HOST=<address of DB> # default is localhost if you are running locally
 export DB_PORT=<port> # default is 5432
-export DB_SSL_MODE=<ssl-mode> # default is disable
+export DB_SSLMODE=<ssl-mode> # default is disable
 ```
 
 ## Running the server
@@ -42,7 +42,7 @@ docker pull ghcr.io/pocketparty/authentication-service:latest
 Run the docker container
 
 ```bash
-docker run -p 8080:8080 --name authentication-server-demo -e DB_USER=<db-username> -e DB_NAME=<database name> -e DB_PASSWORD=<password> -e DB_HOST=<address of DB> -e DB_PORT=<port> -e DB_SSL_MODE=<ssl-mode> ghcr.io/pocketparty/authentication-service
+docker run -p 8080:8080 --name authentication-server-demo -e DB_USER=<db-username> -e DB_NAME=<database name> -e DB_PASSWORD=<password> -e DB_HOST=<address of DB> -e DB_PORT=<port> -e DB_SSLMODE=<ssl-mode> ghcr.io/pocketparty/authentication-service
 ```
 
 add the flag --network="host" if you want to run the container in the host network
