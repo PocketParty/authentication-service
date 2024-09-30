@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"encoding/json"
 	"fmt"
+	"github.com/dgrijalva/jwt-go"
 	"log"
 	"net/http"
 	"os"
@@ -11,7 +12,6 @@ import (
 
 	_ "authentication-service/docs" // Import the generated docs
 
-	"github.com/dgrijalva/jwt-go"
 	"github.com/lib/pq"
 	httpSwagger "github.com/swaggo/http-swagger" // http-swagger middleware
 	"golang.org/x/crypto/bcrypt"
@@ -40,14 +40,6 @@ func initDB() {
 		log.Fatalf("Error opening database: %q", err)
 	}
 
-	_, err = db.Exec(`CREATE TABLE IF NOT EXISTS users (
-        id SERIAL PRIMARY KEY,
-        username TEXT UNIQUE NOT NULL,
-        password TEXT NOT NULL
-    )`)
-	if err != nil {
-		log.Fatalf("Error creating table: %q", err)
-	}
 }
 
 // signupHandler handles user sign-up requests
